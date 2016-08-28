@@ -1,9 +1,14 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
-import { AppComponent, environment } from './app/';
+/**
+ * Boostrap program
+ * 
+ * @author Ludovic FRIN<ludovic@frin.fr>
+ */
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {enableProdMode} from '@angular/core';
+import {environment, AppModule} from './app/';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(AppComponent);
+platformBrowserDynamic().bootstrapModule(AppModule);

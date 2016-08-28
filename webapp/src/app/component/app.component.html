@@ -1,0 +1,13 @@
+<md-sidenav-layout fullscreen>
+	<md-sidenav #sidenav>
+    	<md-nav-list class="secondary">
+		</md-nav-list>
+	</md-sidenav>
+	<md-toolbar color="primary">
+		<button md-icon-button (click)="sidenav.open()">
+			<md-icon>menu</md-icon>
+		</button>
+		{{ title }}
+	</md-toolbar>
+	<router-outlet></router-outlet>
+</md-sidenav-layout>
