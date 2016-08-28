@@ -12,7 +12,11 @@ const map: any = {
   '@angular2-material': 'vendor/@angular2-material'
 };
 
-const materialComponents = [
+/** User packages configuration. */
+const packages: any = {
+};
+
+const materialPkgs = [
   'button',
   'card',
   'core',
@@ -34,9 +38,10 @@ const materialComponents = [
   'tooltip'
 ];
 
-/** User packages configuration. */
-const packages: any = {
-};
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+});
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
