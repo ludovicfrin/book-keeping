@@ -15,3 +15,12 @@
 md-sidenav-layout {
 	background: rgba(0,0,0,0.03);
 }
+
+main {
+	margin:5px;
+}
+
+md-nav-list a.selected md-icon, 
+md-nav-list a.selected span {
+	color:#009688;
+}

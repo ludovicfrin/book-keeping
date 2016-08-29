@@ -1,13 +1,19 @@
 <md-sidenav-layout fullscreen>
 	<md-sidenav #sidenav>
     	<md-nav-list class="secondary">
+			<a (click)="setTitle( 'Cat&eacute;gories' ); sidenav.close()" md-list-item routerLink="category" routerLinkActive="selected">
+				<md-icon md-list-icon>label</md-icon>
+				<span md-line>Cat&eacute;gories</span>
+			</a>    	
 		</md-nav-list>
 	</md-sidenav>
 	<md-toolbar color="primary">
 		<button md-icon-button (click)="sidenav.open()">
 			<md-icon>menu</md-icon>
 		</button>
-		{{ title }}
+		<span>{{title}}</span>
 	</md-toolbar>
-	<router-outlet></router-outlet>
+	<main>
+		<router-outlet></router-outlet>
+	</main>
 </md-sidenav-layout>
