@@ -5,6 +5,7 @@ import { XHRBackend } from '@angular/http';
 
 import {MdButtonModule} from '@angular2-material/button/button';
 import {MdCardModule} from '@angular2-material/card/card';
+import {MdCheckboxModule} from '@angular2-material/checkbox/checkbox';
 import {MdIconModule} from '@angular2-material/icon/icon';
 import {MdGridListModule} from '@angular2-material/grid-list/grid-list';
 import {MdListModule} from '@angular2-material/list/list';
@@ -25,6 +26,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 	imports: [
 		BrowserModule,
 		HttpModule,
+		MdCheckboxModule,
 		MdCardModule,
 		MdButtonModule,
 		MdIconModule,

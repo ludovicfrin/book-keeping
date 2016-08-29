@@ -1,0 +1,7 @@
+[
+	{ "id": 1, "name": "Catégorie 1" }, 
+	{ "id": 2, "name": "Catégorie 2" }, 
+	{ "id": 3, "name": "Catégorie 3" }, 
+	{ "id": 4, "name": "Catégorie 4" }, 
+	{ "id": 5, "name": "Catégorie 5", "parent": {"id": 1, "name": "Catégorie 1" } }
+]

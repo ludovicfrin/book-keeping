@@ -1,3 +1,19 @@
-<p>
-  category works!
-</p>
+<div *ngIf="!categories || categories?.length == 0">Aucune cat&eacute;gorie existante</div>
+<div *ngIf="categories?.length > 0">
+	<table>
+		<thead>
+			<tr>
+				<th><md-checkbox></md-checkbox></th>
+				<th>Nom</th>
+				<th>Cat&eacute;gorie parente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let category of categories">
+				<td><md-checkbox></md-checkbox></td>
+				<td>{{category.name}}</td>
+				<td>{{category.parent?.name}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
