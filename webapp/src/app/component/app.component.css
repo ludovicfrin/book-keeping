@@ -3,13 +3,18 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.primary {
+/* .primary {
 	background: rgba(0,0,0,0.54);
 	color: white;
 }
-
+ */
 .secondary {
 	color: rgba(0,0,0,0.54);
+}
+
+.accent {
+	color: white;
+	background:black;
 }
 
 md-sidenav-layout {
@@ -23,4 +28,35 @@ main {
 md-nav-list a.selected md-icon, 
 md-nav-list a.selected span {
 	color:#009688;
+}
+
+.toolbar-fill-remaining {
+	flex: 1 1 auto;
+}
+
+input {
+	height:24px;
+	background:transparent;
+	border: none;
+	border-bottom:solid 1px white;
+	display:inline-block;
+	font-size: 14px;
+	color:#fff;
+}
+
+input:focus{
+	outline: none;
+}   
+
+::-webkit-input-placeholder  {
+    color: rgba(255,255,255,0.5);
+}
+:-moz-placeholder {
+   color: rgba(255,255,255,0.5);
+}
+::-moz-placeholder {
+   color: rgba(255,255,255,0.5);
+}
+:-ms-input-placeholder {
+   color: rgba(255,255,255,0.5);
 }

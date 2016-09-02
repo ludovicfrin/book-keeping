@@ -1,7 +1,22 @@
 [
-	{ "id": 1, "name": "Catégorie 1" }, 
-	{ "id": 2, "name": "Catégorie 2" }, 
-	{ "id": 3, "name": "Catégorie 3" }, 
-	{ "id": 4, "name": "Catégorie 4" }, 
-	{ "id": 5, "name": "Catégorie 5", "parent": {"id": 1, "name": "Catégorie 1" } }
+	{ "id": 1, "name": "Catégorie 1", "type": "I" }, 
+	{ "id": 2, "name": "Catégorie 2", "type": "I" }, 
+	{ "id": 3, "name": "Catégorie 3", "type": "I" }, 
+	{ "id": 4, "name": "Catégorie 4", "type": "I" }, 
+	{ "id": 5, "name": "Catégorie 5", "type": "I", "parent" : 1 },
+	{ "id": 6, "name": "Catégorie 6", "type": "I" }, 
+	{ "id": 7, "name": "Catégorie 7", "type": "E" }, 
+	{ "id": 8, "name": "Catégorie 8", "type": "E" }, 
+	{ "id": 9, "name": "Catégorie 9", "type": "E" }, 
+	{ "id": 10, "name": "Catégorie 10", "type": "E" }, 
+	{ "id": 11, "name": "Catégorie 11", "type": "E" },
+	{ "id": 12, "name": "Catégorie 12", "type": "I" }, 
+	{ "id": 13, "name": "Catégorie 13", "type": "I" }, 
+	{ "id": 14, "name": "Catégorie 14", "type": "I" }, 
+	{ "id": 15, "name": "Catégorie 15", "type": "I" }, 
+	{ "id": 16, "name": "Catégorie 16", "type": "I", "parent": 1 },
+	{ "id": 17, "name": "Catégorie 17", "type": "I" }, 
+	{ "id": 18, "name": "Catégorie 18", "type": "E" }, 
+	{ "id": 19, "name": "Catégorie 19", "type": "E" }, 
+	{ "id": 20, "name": "Catégorie 20", "type": "E" } 
 ]

@@ -1,3 +1,12 @@
+main {
+	margin: 5px;
+}
+
+main.reduce {
+ 	overflow:auto;
+	height: calc(100% - 280px);
+}
+
 table {
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 	border: 1px solid rgba(0,0,0,.12);
@@ -20,7 +29,6 @@ th, td {
 }
 
 th {
-
 	text-overflow: ellipsis;
 	color: rgba(0,0,0,.54);
 }
@@ -28,4 +36,20 @@ th {
 td {
     border-top: 1px solid rgba(0,0,0,.12);
     border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+md-card {
+	position: absolute; 
+	bottom: 5px;
+	left:5px;
+	right:5px;
+	height:150px;
+}
+
+md-card-content {
+	display: flex;
+	max-width:calc(100% - 180px);
+}
+md-card-content span.form-fill-remaining {
+	flex: 1 1 auto;
 }

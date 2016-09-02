@@ -1,19 +1,48 @@
-<div *ngIf="!categories || categories?.length == 0">Aucune cat&eacute;gorie existante</div>
-<div *ngIf="categories?.length > 0">
-	<table>
-		<thead>
-			<tr>
-				<th><md-checkbox></md-checkbox></th>
-				<th>Nom</th>
-				<th>Cat&eacute;gorie parente</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let category of categories">
-				<td><md-checkbox></md-checkbox></td>
-				<td>{{category.name}}</td>
-				<td>{{category.parent?.name}}</td>
-			</tr>
-		</tbody>
-	</table>
+<main [class.reduce]="formItem">
+	<div *ngIf="!items || item?.length == 0">Aucune cat&eacute;gorie existante</div>
+	<div *ngIf="items?.length > 0">
+		<table>
+			<thead>
+				<tr>
+					<th><md-checkbox [checked]="hasAllSelected" [indeterminate]="hasSomeSelected()" (change)="doSelectAll($event.checked);"></md-checkbox></th>
+					<th>Nom</th>
+					<th>Type</th>
+					<th>Cat&eacute;gorie parente</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of items" (click)="doDisplayForm(item)">
+					<td><md-checkbox (click)="doClick($event)" (change)="doSelect($event.checked, item)" [checked]="item.selected"></md-checkbox></td>
+					<td>{{item.name}}</td>
+					<td *ngIf="item.type == 'I'">Revenu</td>
+					<td *ngIf="item.type == 'E'">D&eacute;pense</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</main>
+<div *ngIf="formItem">
+	<form  (ngSubmit)="saveForm()">
+	<md-card>
+		<md-card-title>Ajout d'une cat&eacute;gorie</md-card-title>
+		<md-card-content>
+				<md-input placeholder="Nom" name="name" [(ngModel)]="formItem.name"></md-input>
+				<span class="form-fill-remaining"></span>
+				<md-radio-group name="type" [(ngModel)]="formItem.type" (change)="setParentsForm()">
+					<md-radio-button value="I">Revenu</md-radio-button>
+					<md-radio-button value="E">D&eacute;pense</md-radio-button>
+				</md-radio-group>
+				<span class="form-fill-remaining"></span>
+				<select name="parent" [(ngModel)]="formItem.parent">
+					<option>Aucune cat&eacute;gorie parente</option>
+					<option *ngFor="let parent of parents" [value]="parent.id" (selected)="parent.id == formItem.parent">{{parent.name}}</option>
+				</select>			
+		</md-card-content>
+		<md-card-actions align="end">
+			<button md-raised-button (click)="cancelForm($event)">Annuler</button>
+			<button type="submit" md-raised-button color="accent">Valider</button>
+		</md-card-actions>
+	</md-card>
+	</form>
 </div>

@@ -1,19 +1,22 @@
 <md-sidenav-layout fullscreen>
 	<md-sidenav #sidenav>
     	<md-nav-list class="secondary">
-			<a (click)="setTitle( 'Cat&eacute;gories' ); sidenav.close()" md-list-item routerLink="category" routerLinkActive="selected">
+			<a (click)="sidenav.close()" md-list-item routerLink="category" routerLinkActive="selected">
 				<md-icon md-list-icon>label</md-icon>
 				<span md-line>Cat&eacute;gories</span>
 			</a>    	
 		</md-nav-list>
 	</md-sidenav>
 	<md-toolbar color="primary">
-		<button md-icon-button (click)="sidenav.open()">
-			<md-icon>menu</md-icon>
-		</button>
+		<button *ngIf="childView" md-icon-button (click)="goBack()"><md-icon>arrow_back</md-icon></button>
+		<button *ngIf="!childView" md-icon-button (click)="sidenav.open()"><md-icon>menu</md-icon></button>
 		<span>{{title}}</span>
+		<span class="toolbar-fill-remaining"></span>
+		<span>
+			<input #search placeholder="Recherche"  (keyup)="do('search', search.value)" />
+			<md-icon>search</md-icon>
+			<a (click)="do('delete')" [hidden]="!display.delete"><md-icon>delete</md-icon></a>
+		</span>
 	</md-toolbar>
-	<main>
-		<router-outlet></router-outlet>
-	</main>
+	<router-outlet></router-outlet>
 </md-sidenav-layout>

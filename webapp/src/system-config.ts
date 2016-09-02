@@ -9,11 +9,13 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  '@angular2-material': 'vendor/@angular2-material'
+  '@angular2-material': 'vendor/@angular2-material',
+  'angular2-logger': 'vendor/angular2-logger' 
 };
 
 /** User packages configuration. */
 const packages: any = {
+  'angular2-logger': { defaultExtension: 'js' }
 };
 
 const materialPkgs = [
@@ -47,6 +49,8 @@ materialPkgs.forEach((pkg) => {
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
  **********************************************************************************************/
+ 
+ 
 const barrels: string[] = [
   // Angular specific barrels.
   '@angular/core',
@@ -64,9 +68,11 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
-  'app/component/category/category',
-  'app/component/page-not-found',
+  'app/component',
   'app/component/category',
+  'app/component/page-not-found',
+  'app/service',
+  'app/pipe',
   /** @cli-barrel */
 ];
 
