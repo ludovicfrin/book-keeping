@@ -24,7 +24,7 @@ import { ToolbarService } from '../service/toolbar.service';
 export class AppComponent implements OnInit {
     title: string = '';
     childView: boolean = false;
-    display = { "delete": false };
+    display = { "add": false , "delete": false};
     
     private _routerSubscription: Subscription;
     private _route: ActivatedRouteSnapshot;
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
     public do(action: string, params: any): void {
         this._logger.debug("[AppComponent] Fire action " + action + " with params " + params);
         
-        this._toolbarService.do(this._route.parent.url[0].path, action, params);
+        this._toolbarService.do(this._route.url[0].path, action, params);
     }
     
     /**

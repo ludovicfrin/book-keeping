@@ -1,10 +1,17 @@
 main {
-	margin: 5px;
+	margin: 5px;	
 }
 
-main.reduce {
- 	overflow:auto;
-	height: calc(100% - 280px);
+.list {
+	position:absolute;
+	overflow:auto;
+	max-height: 50%;
+	width: calc(100% - 10px);
+	max-height: calc(100% - 75px);
+}
+
+.list.reduce {
+	max-height: calc(100% - 280px) !important;
 }
 
 table {
@@ -15,6 +22,7 @@ table {
 	background-color: #fff;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 	width:100%;
+
 }
 
 tr:hover {
@@ -39,7 +47,8 @@ td {
 }
 
 md-card {
-	position: absolute; 
+	position: absolute;
+	z-index:-1;
 	bottom: 5px;
 	left:5px;
 	right:5px;
@@ -52,4 +61,12 @@ md-card-content {
 }
 md-card-content span.form-fill-remaining {
 	flex: 1 1 auto;
+}
+
+[md-fab] {
+	position:fixed;
+	display:block;
+	bottom:40px;
+	right:40px;
+	z-index:9;
 }

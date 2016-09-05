@@ -5,8 +5,8 @@
  */
 export class Category {
     id: number;
-    name: string;
     type: string;
-    parent: Category;
+    name: string;
+    parent: number;
     selected: boolean;
 }

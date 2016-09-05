@@ -27,18 +27,15 @@ import { SearchPipe } from '../../pipe/search.pipe';
 export class CategoryComponent implements OnInit {
     private _categories: Category[];
     private _display: any = { 'delete': false };
-    
-    formItem: Category;
-    parents: Category[] = [];
+
     items: Category[];
     search: string;
-favoriteSeason: string = 'Autumn';
-  seasonOptions = [
-    'Winter',
-    'Spring',
-    'Summer',
-    'Autumn',
-];
+    
+    selectedIndex: number = -1;
+    formTitle: String;
+    formItem: Category;
+    parents: Category[] = [];
+
     
     /**
      * Constructor
@@ -83,27 +80,6 @@ favoriteSeason: string = 'Autumn';
     }
     
     /**
-     * Search an item by id
-     * 
-     * @param id Item identifier
-     * @return Item
-     */
-    public searchItemById(id: number): Category {
-        if (!id) {
-            return null;
-        }
-        this._logger.debug("[CategoryComponent] Looking for category with id " + id);
-        
-        let item;
-        let items: Category[] = this._categories.filter(category => category.id == id);
-        
-        if (items.length > 0) {
-            item = items[0];
-        }
-        return item;        
-    }
-    
-    /**
      * Click on a item using the checkbox
      * Stop others actions (select a item)
      * 
@@ -137,63 +113,6 @@ favoriteSeason: string = 'Autumn';
         
         this.items.forEach(item => item.selected = status);
     }
-    
-    /**
-     * Edit an item
-     * Display the form
-     * 
-     * @param item Item to edit
-     */
-    public doDisplayForm(item): void {
-        this._logger.debug("[CategoryComponent] Edit category's id " + item.id);
-        
-        this.formItem = Object.create(item);
-    }
-    
-    /**
-     * Set the parent list in the form
-     */
-    public setParentsForm () {
-        this._logger.debug("[CategoryComponent] Set the parents list in the form for the type " + this.formItem.type);
-        
-        this.parents = this._categories.filter(category => category.type == this.formItem.type);
-    }    
-    
-    /**
-     * Cancel the current item edition
-     * 
-     * @param event Events manager 
-     */
-    public cancelForm(event): void {
-        this._logger.debug("[CategoryComponent] Cancel edit");
-        
-        event.preventDefault();
-        this.formItem = null;
-    }
-    
-    /**
-     * Save the current item edition 
-     */
-    public saveForm(): void {
-        this._logger.debug("[CategoryComponent] Save edit");
-        
-        //TODO remove comments
-//        this._categoryService
-//            .save(this.formItem)
-//            .then (result => { this.formItem = null; })
-//            .catch(error => this._logger.error("[CategoryComponent] Can't save the category with id " + this.formItem.id + ". " + error));
-//       
-        //TODO to remove
-        let newItem = Object.create(this.formItem);
-        if (this.formItem.id) {
-            console.log("Update");
-            this._categories[0] = newItem;
-        } else {
-            console.log("Add");
-            this._categories.push(newItem);
-        }
-        this.formItem = null;
-    }     
     
     /**
      * Search items in the list
@@ -254,4 +173,65 @@ favoriteSeason: string = 'Autumn';
     public hasAlllSected(): boolean {
         return this.items.every(category => category.selected) == true;
     }
+    
+   /**
+     * Edit an item
+     * Display the form
+     * 
+     * @param index Item index in the list
+     */
+    public displayForm(index: number): void {
+        if (index >= 0) {
+            this._logger.debug("[CategoryComponent] Edit category width index " + index);
+            this.selectedIndex = index;
+            this.formItem = JSON.parse(JSON.stringify(this.items[index]));
+            this.formTitle = "Modification de la cat\u00e9gorie " +  this.formItem.name;          
+        } else {
+            this._logger.debug("[CategoryComponent] Edit new category");
+            this.formItem = new Category();
+            this.formTitle = "Ajout d'une cat\u00e9gorie";
+        }
+    }
+    
+    /**
+     * Set the parent list in the form
+     */
+    public setParentsListForm () {
+        this._logger.debug("[CategoryComponent] Set the parents list in the form for the type " + this.formItem.type);
+        
+        this.parents = this._categories.filter(category => category.type == this.formItem.type);
+    }    
+    
+    /**
+     * Cancel the current item edition
+     * 
+     * @param event Events manager 
+     */
+    public cancelForm(event): void {
+        this._logger.debug("[CategoryComponent] Cancel edit");
+        
+        event.preventDefault();
+        this.formItem = null;
+    }
+    
+    /**
+     * Save the current item edition 
+     */
+    public saveForm(): void {
+        this._logger.debug("[CategoryComponent] Save the category's edition" + this.selectedIndex);
+        
+        //TODO remove comments
+        this._categoryService
+            .save(this.formItem)
+            .then (result => { 
+                if (this.selectedIndex >= 0) {
+                    this.items[this.selectedIndex] = this.formItem;
+                } else {
+                    this._categories.push(this.formItem);
+                }
+                this.formItem = null;
+                this.selectedIndex = -1;
+            })
+            .catch(error => this._logger.error("[CategoryComponent] Can't save the category with id " + this.formItem.id + ". " + error));
+    }    
 }

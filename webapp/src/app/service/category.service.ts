@@ -36,7 +36,7 @@ export class CategoryService {
 		return this._http.get("/examples/rest/category")
 			.toPromise()
 			.then(response => response.json() as Category[])
-			.catch(this.handleError);
+			.catch(this._handleError);
     }  
     
     /**
@@ -51,7 +51,7 @@ export class CategoryService {
 		return this._http.get("/test/category/" + id)
 			.toPromise()
 			.then(response => response.json() as Category)
-			.catch(this.handleError);
+			.catch(this._handleError);
 	}
     
     /**
@@ -69,10 +69,10 @@ export class CategoryService {
             path += "/" + category.id;
         }
         
-        return this._http.post(path, category)
+        return this._http.post(path, JSON.stringify(category))
             .toPromise()
             .then(response => response.json() as Category)
-            .catch(this.handleError);
+            .catch(this._handleError);
     }
 	
 	/**
@@ -85,7 +85,7 @@ export class CategoryService {
          
 	 	return this._http.delete("/test/category/" + id)
 			.toPromise()
-			.catch(this.handleError);
+			.catch(this._handleError);
 	 }
 
 	/**
@@ -94,7 +94,7 @@ export class CategoryService {
 	 * @param error Error
 	 * @return Error message
 	 */
-	private handleError(error: any): Promise<any> {
+	private _handleError(error: any): Promise<any> {
         return Promise.reject(error.message || error);
-	} 
+	}
 }

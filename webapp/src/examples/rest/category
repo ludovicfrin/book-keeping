@@ -3,7 +3,7 @@
 	{ "id": 2, "name": "Catégorie 2", "type": "I" }, 
 	{ "id": 3, "name": "Catégorie 3", "type": "I" }, 
 	{ "id": 4, "name": "Catégorie 4", "type": "I" }, 
-	{ "id": 5, "name": "Catégorie 5", "type": "I", "parent" : 1 },
+	{ "id": 5, "name": "Catégorie 5", "type": "I", "parent": 1 },
 	{ "id": 6, "name": "Catégorie 6", "type": "I" }, 
 	{ "id": 7, "name": "Catégorie 7", "type": "E" }, 
 	{ "id": 8, "name": "Catégorie 8", "type": "E" }, 
